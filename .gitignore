@@ -1,13 +1,9 @@
-# Bootstrap
-app/bootstrap*
-
-# Symfony directories
+.buildpath
+.project
+.settings/*
+.DS_Store
+_notes
+Icon?
 vendor/*
-*/logs/*
-*/cache/*
-web/uploads/*
-web/bundles/*
-
-# Configuration files
-app/config/parameters.ini
-app/config/parameters.yml
+composer.lock
+phpunit.xml
