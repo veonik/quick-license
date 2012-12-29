@@ -32,7 +32,7 @@ interface HandlerInterface
      *
      * @return string The processed contents
      */
-    function processFile($contents);
+    function process($contents);
 
     /**
      * Returns true if the given file contents does not already contain license text

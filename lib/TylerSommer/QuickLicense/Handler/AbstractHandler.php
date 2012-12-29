@@ -18,6 +18,11 @@ abstract class AbstractHandler implements HandlerInterface
     protected $formattedLicense;
 
     /**
+     * @var Formatter\FormatterInterface
+     */
+    protected $formatter;
+
+    /**
      * Constructor
      *
      * @param string $license The body of the license
@@ -30,13 +35,11 @@ abstract class AbstractHandler implements HandlerInterface
     }
 
     /**
-     * Format the given license
+     * Gets the associated formatter
      *
-     * @param string $license
-     *
-     * @return string
+     * @return Formatter\FormatterInterface
      */
-    abstract protected function formatLicense($license);
+    abstract protected function getFormatter();
 
     /**
      * Gets the formatted license
@@ -68,7 +71,7 @@ abstract class AbstractHandler implements HandlerInterface
     public function setLicense($license)
     {
         $this->license = $license;
-        $this->formattedLicense = $this->formatLicense($license);
+        $this->formattedLicense = $this->getFormatter()->formatLicense($license);
     }
 }
 
