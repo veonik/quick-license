@@ -38,14 +38,14 @@ interface HandlerInterface
      *
      * @return void
      */
-    function setLicense($license);
+    public function setLicense($license);
 
     /**
      * Gets the array of supported extensions
      *
      * @return array
      */
-    function getSupportedExtensions();
+    public function getSupportedExtensions();
 
     /**
      * Inserts the given license text into the file contents
@@ -54,7 +54,7 @@ interface HandlerInterface
      *
      * @return string The processed contents
      */
-    function process($contents);
+    public function process($contents);
 
     /**
      * Returns true if the given file contents does not already contain license text
@@ -63,5 +63,5 @@ interface HandlerInterface
      *
      * @return bool
      */
-    function doesFileNeedProcessing($contents);
+    public function doesFileNeedProcessing($contents);
 }

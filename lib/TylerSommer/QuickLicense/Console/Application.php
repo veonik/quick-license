@@ -34,7 +34,7 @@ use TylerSommer\QuickLicense\Handler\HandlerFactoryInterface;
 
 class Application extends BaseApplication
 {
-    const VERSION = '0.1.1';
+    const VERSION = '0.1.2';
 
     /**
      * @var \TylerSommer\QuickLicense\Handler\HandlerFactoryInterface
