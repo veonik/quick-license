@@ -11,6 +11,10 @@ class DirectoryProcessor extends AbstractProcessor
      */
     public function processPath($path)
     {
+        $processor = new FileProcessor($this->handlerFactory);
 
+        foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path)) as $file) {
+            $processor->processPath($file);
+        }
     }
 }
