@@ -82,7 +82,7 @@ abstract class AbstractHandler implements HandlerInterface
      */
     public function doesFileNeedProcessing($contents)
     {
-        return false === strpos($contents, $this->license);
+        return false === strpos($contents, $this->formattedLicense);
     }
 
     /**
