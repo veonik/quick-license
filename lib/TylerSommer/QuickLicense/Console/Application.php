@@ -34,13 +34,18 @@ use TylerSommer\QuickLicense\Handler\HandlerFactoryInterface;
 
 class Application extends BaseApplication
 {
-    const VERSION = '0.1.1';
+    const VERSION = '0.1.2';
 
     /**
      * @var \TylerSommer\QuickLicense\Handler\HandlerFactoryInterface
      */
     protected $handlerFactory;
 
+    /**
+     * Constructor
+     *
+     * @param \TylerSommer\QuickLicense\Handler\HandlerFactoryInterface $handlerFactory
+     */
     public function __construct(HandlerFactoryInterface $handlerFactory)
     {
         $this->handlerFactory = $handlerFactory;
@@ -48,11 +53,17 @@ class Application extends BaseApplication
         parent::__construct('Quick License', self::VERSION);
     }
 
+    /**
+     * @return \TylerSommer\QuickLicense\Handler\HandlerFactoryInterface
+     */
     public function getHandlerFactory()
     {
         return $this->handlerFactory;
     }
 
+    /**
+     * @return \Symfony\Component\Console\Input\InputDefinition
+     */
     public function getDefaultInputDefinition()
     {
         return new InputDefinition(array(
@@ -60,11 +71,19 @@ class Application extends BaseApplication
         ));
     }
 
+    /**
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     *
+     * @return string
+     */
     protected function getCommandName(InputInterface $input)
     {
         return 'quick-license';
     }
 
+    /**
+     * @return array
+     */
     protected function getDefaultCommands()
     {
         $mainCommand = new QuickLicenseCommand($this->handlerFactory);

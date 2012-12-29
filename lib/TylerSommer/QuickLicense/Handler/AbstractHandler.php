@@ -96,4 +96,3 @@ abstract class AbstractHandler implements HandlerInterface
         $this->formattedLicense = $this->getFormatter()->formatLicense($license);
     }
 }
-
