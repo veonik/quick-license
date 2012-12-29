@@ -24,11 +24,11 @@
 
 namespace TylerSommer\QuickLicense\Handler;
 
+use TylerSommer\QuickLicense\Handler\Formatter\CStyleFormatter;
+
 /**
  * Processes PHP files
  */
-use TylerSommer\QuickLicense\Handler\Formatter\CStyleFormatter;
-
 class PhpHandler extends AbstractHandler
 {
     /**

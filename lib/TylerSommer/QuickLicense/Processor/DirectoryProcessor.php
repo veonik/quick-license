@@ -24,6 +24,9 @@
 
 namespace TylerSommer\QuickLicense\Processor;
 
+/**
+ * Processes directories
+ */
 class DirectoryProcessor extends AbstractProcessor
 {
     /**
