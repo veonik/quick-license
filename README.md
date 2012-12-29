@@ -1,6 +1,8 @@
 quick-license
 =============
 
+[![Build Status](https://travis-ci.org/tyler-sommer/quick-license.png?branch=master)](https://travis-ci.org/tyler-sommer/quick-license)
+
 Quickly add license text to all files in your project
 
 This application will insert license text into each of your project files, if it does not already have it. It was
