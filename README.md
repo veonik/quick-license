@@ -10,7 +10,17 @@ written because the alternative, manual way of accomplishing this is just way to
 Installation
 ------------
 
-Install via packagist
+Clone the repository:
+
+    git clone git://github.com/tyler-sommer/quick-license.git
+
+Quick License uses Composer for dependency management. If you don't have composer, go ahead and:
+
+    curl -s https://getcomposer.org/installer | php
+
+Then install the necessary dependencies:
+
+    php composer.phar install
 
 
 Usage
