@@ -34,7 +34,7 @@ interface HandlerFactoryInterface
      *
      * @return HandlerFactoryInterface The current instance
      */
-    function addHandler(HandlerInterface $handler);
+    public function addHandler(HandlerInterface $handler);
 
     /**
      * @param string $extension
@@ -42,22 +42,22 @@ interface HandlerFactoryInterface
      * @throws HandlerNotFoundException if unable to locate the necessary handler
      * @return HandlerInterface
      */
-    function getExtensionHandler($extension);
+    public function getExtensionHandler($extension);
 
     /**
      * @return array
      */
-    function getSupportedExtensions();
+    public function getSupportedExtensions();
 
     /**
      * @param array $extensions
      *
      * @return void
      */
-    function setEnabledExtensions(array $extensions);
+    public function setEnabledExtensions(array $extensions);
 
     /**
      * @return array|HandlerInterface[]
      */
-    function getHandlers();
+    public function getHandlers();
 }

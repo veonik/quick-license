@@ -36,5 +36,5 @@ interface ProcessorInterface
      *
      * @return void
      */
-    function processPath($path);
+    public function processPath($path);
 }

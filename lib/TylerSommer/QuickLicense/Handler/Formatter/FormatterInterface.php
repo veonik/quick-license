@@ -38,5 +38,5 @@ interface FormatterInterface
      *
      * @return string The formatted license
      */
-    function formatLicense($license);
+    public function formatLicense($license);
 }
