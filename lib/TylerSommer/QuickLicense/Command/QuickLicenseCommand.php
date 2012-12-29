@@ -2,6 +2,7 @@
 
 namespace TylerSommer\QuickLicense\Command;
 
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,9 +33,12 @@ class QuickLicenseCommand extends Command
 
     <info>quick-license path</info>
 
+The path may be either a single file or a directory.
+
+
 You can specify which types of files you wanted handled:
 
-    <info>quick-license --extensions=["php","js"] path</info>
+    <info>quick-license --extensions=["php","js"] --license-file=/path/to/license path</info>
 
 <comment>Supported file extensions:</comment>
 END;
@@ -46,21 +50,38 @@ END;
         $this->setName('quick-license')
             ->setDescription('Adds license text to files')
             ->addArgument('path', InputArgument::REQUIRED, 'Path or file to process')
-            ->addOption('extensions', 'e', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'Which file extensions to process', $this->handlerFactory->getSupportedExtensions())
+            ->addOption('license-file', 'l', InputOption::VALUE_REQUIRED, 'File containing the license text')
+            ->addOption('extensions', 'e', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'File extensions to process', $this->handlerFactory->getSupportedExtensions())
             ->addOption('help', 'h', InputOption::VALUE_NONE, 'Displays this help text')
             ->setHelp($helpText);
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $path = $input->getArgument('path');
+        $fileLocator = new FileLocator(getcwd());
 
-        if (!file_exists($path)) {
-            throw new \RuntimeException(sprintf('The specified path does not exist.'));
+        $licenseFile = $input->getOption('license-file');
+        try {
+            $licenseFile = $fileLocator->locate($licenseFile);
+        } catch (\InvalidArgumentException $e) {
+            throw new \RuntimeException('The specified license file does not exist.');
+        }
+
+        $license = file_get_contents($licenseFile);
+
+        $path = $input->getArgument('path');
+        try {
+            $path = $fileLocator->locate($path);
+        } catch (\InvalidArgumentException $e) {
+            throw new \RuntimeException('The specified path does not exist.');
         }
 
         $enabledExtensions = $input->getOption('extensions');
         $this->handlerFactory->setEnabledExtensions($enabledExtensions);
+
+        foreach ($this->handlerFactory->getHandlers() as $handler) {
+            $handler->setLicense($license);
+        }
 
         if (is_dir($path)) {
             $processor = new DirectoryProcessor($this->handlerFactory);

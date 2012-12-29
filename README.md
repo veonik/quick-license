@@ -20,9 +20,12 @@ Quick License inserts the specified license text into your project files:
 
      quick-license path
 
+ The path may be either a single file or a directory.
+
+
  You can specify which types of files you wanted handled:
 
-     quick-license --extensions=["php","js"] path
+     quick-license --extensions=["php","js"] --license-file=/path/to/license path
 
  Supported file extensions:
    php

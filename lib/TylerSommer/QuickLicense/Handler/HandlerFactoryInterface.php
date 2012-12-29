@@ -33,4 +33,9 @@ interface HandlerFactoryInterface
      * @return void
      */
     function setEnabledExtensions(array $extensions);
+
+    /**
+     * @return array|HandlerInterface[]
+     */
+    function getHandlers();
 }

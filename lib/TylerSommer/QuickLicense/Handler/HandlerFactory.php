@@ -10,6 +10,11 @@ class HandlerFactory implements HandlerFactoryInterface
     protected $map = array();
 
     /**
+     * @var array|HandlerInterface[]
+     */
+    protected $handlers = array();
+
+    /**
      * Constructor
      *
      * @param array|HandlerInterface[] $handlers
@@ -30,6 +35,7 @@ class HandlerFactory implements HandlerFactoryInterface
     {
         foreach ($handler->getSupportedExtensions() as $extension) {
             $this->map[$extension] = $handler;
+            $this->handlers[] = $handler;
         }
     }
 
@@ -66,5 +72,13 @@ class HandlerFactory implements HandlerFactoryInterface
                 unset($this->map[$extension]);
             }
         }
+    }
+
+    /**
+     * @return array|HandlerInterface[]
+     */
+    public function getHandlers()
+    {
+        return $this->handlers;
     }
 }
