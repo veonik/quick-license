@@ -13,20 +13,21 @@ class CStyleFormatter implements FormatterInterface
      */
     public function formatLicense($license)
     {
-        $lines = explode("\n", trim($license));
+        $lines = explode("\n\n", trim($license));
 
         $formattedLicense = "/*\n";
 
         foreach ($lines as $line) {
-            $formattedLicense .= $this->formatLine($line);
+            $formattedLicense .= $this->formatLine($line) . $this->formatLine('');
         }
 
-        return rtrim($formattedLicense) . "\n */\n";
+        return rtrim($formattedLicense, "* \n") . "\n */\n";
     }
 
     private function formatLine($line)
     {
         $formattedLine = '';
+        $line = str_replace("\n", ' ', $line);
         do {
             $line = ' * ' . $line;
             $pos = strlen($line);
