@@ -53,12 +53,13 @@ class QuickLicenseCommand extends Command
         $helpText = <<<END
 <comment>Quick License</comment> inserts the specified license text into your project files:
 
-    <info>quick-license path</info>
+    <info>quick-license --license-file=/path/to/license path</info>
 
-The path may be either a single file or a directory.
+The path may be either a single file or a directory. The license file will usually be the LICENSE file in your
+project's root folder.
 
 
-You can specify which types of files you wanted handled:
+Optionally, you can specify which types of files you want to be processed:
 
     <info>quick-license --extensions=["php","js"] --license-file=/path/to/license path</info>
 

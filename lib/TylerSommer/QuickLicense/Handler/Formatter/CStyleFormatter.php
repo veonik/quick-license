@@ -24,6 +24,9 @@
 
 namespace TylerSommer\QuickLicense\Handler\Formatter;
 
+/**
+ * Formats a license in C-style formatting
+ */
 class CStyleFormatter implements FormatterInterface
 {
     /**
@@ -46,6 +49,13 @@ class CStyleFormatter implements FormatterInterface
         return rtrim($formattedLicense, "* \n") . "\n */\n";
     }
 
+    /**
+     * Formats the given line
+     *
+     * @param string $line
+     *
+     * @return string
+     */
     private function formatLine($line)
     {
         $formattedLine = '';

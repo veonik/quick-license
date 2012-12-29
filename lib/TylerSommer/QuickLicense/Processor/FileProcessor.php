@@ -26,6 +26,9 @@ namespace TylerSommer\QuickLicense\Processor;
 
 use TylerSommer\QuickLicense\Handler\HandlerFactoryInterface;
 
+/**
+ * Processes a single file
+ */
 class FileProcessor extends AbstractProcessor
 {
     public function __construct(HandlerFactoryInterface $handlerFactory)

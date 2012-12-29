@@ -26,10 +26,21 @@ namespace TylerSommer\QuickLicense\Processor;
 
 use TylerSommer\QuickLicense\Handler\HandlerFactoryInterface;
 
+/**
+ * Base class for any file processor
+ */
 abstract class AbstractProcessor implements ProcessorInterface
 {
+    /**
+     * @var \TylerSommer\QuickLicense\Handler\HandlerFactoryInterface
+     */
     protected $handlerFactory;
 
+    /**
+     * Constructor
+     *
+     * @param \TylerSommer\QuickLicense\Handler\HandlerFactoryInterface $handlerFactory
+     */
     public function __construct(HandlerFactoryInterface $handlerFactory)
     {
         $this->handlerFactory = $handlerFactory;
