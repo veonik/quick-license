@@ -62,32 +62,10 @@ class Application extends BaseApplication
     }
 
     /**
-     * @return \Symfony\Component\Console\Input\InputDefinition
-     */
-    public function getDefaultInputDefinition()
-    {
-        return new InputDefinition(array(
-            new InputOption('--help',           '-h', InputOption::VALUE_NONE, 'Display this help message.')
-        ));
-    }
-
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     *
-     * @return string
-     */
-    protected function getCommandName(InputInterface $input)
-    {
-        return 'quick-license';
-    }
-
-    /**
      * @return array
      */
     protected function getDefaultCommands()
     {
-        $mainCommand = new QuickLicenseCommand($this->handlerFactory);
-
-        return array($mainCommand, new HelpCommand($mainCommand));
+        return array_merge(array(new QuickLicenseCommand($this->handlerFactory)), parent::getDefaultCommands());
     }
 }

@@ -70,12 +70,11 @@ END;
             $helpText .= "\n  " . $extension;
         }
 
-        $this->setName('quick-license')
+        $this->setName('license')
             ->setDescription('Adds license text to files')
             ->addArgument('path', InputArgument::REQUIRED, 'Path or file to process')
             ->addOption('license-file', 'l', InputOption::VALUE_REQUIRED, 'File containing the license text')
             ->addOption('extensions', 'e', InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED, 'File extensions to process', $this->handlerFactory->getSupportedExtensions())
-            ->addOption('help', 'h', InputOption::VALUE_NONE, 'Displays this help text')
             ->setHelp($helpText);
     }
 
