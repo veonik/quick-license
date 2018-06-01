@@ -1,7 +1,7 @@
 quick-license
 =============
 
-[![Build Status](https://travis-ci.org/tyler-sommer/quick-license.png?branch=master)](https://travis-ci.org/tyler-sommer/quick-license)
+[![Build Status](https://travis-ci.org/veonik/quick-license.png?branch=master)](https://travis-ci.org/veonik/quick-license)
 
 Quickly add license text to all files in your project
 
@@ -14,7 +14,7 @@ Installation
 
 Clone the repository:
 
-    git clone git://github.com/tyler-sommer/quick-license.git
+    git clone git://github.com/veonik/quick-license.git
 
 Quick License uses Composer for dependency management. If you don't have composer, go ahead and:
 
